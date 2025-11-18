@@ -1,0 +1,111 @@
+Mdlang v 0.0.1
+1. Giới thiệu
+Mdlang là một ngôn ngữ lập trình phiên bản sơ khai được tạo nên từ sự tò mò của cha đẻ nó: Nguyễn Huy
+MDlang hiện tại gồm 2 thư viện:
+iostd.h: Thay thế iostream + alias các kiểu dữ liệu và cú pháp cơ bản.
+mdmath.h: Thư viện toán học, các hàm số, hằng số, random, Fibonacci.
+2. Cách dùng ngôn ngữ lập trình
+Do MDlang dùng nền của C/C++ nên:
+Bước 1:  Click vào Embarcadero_Dev-Cpp_6.3_TDM-GCC_9.2_Setup.exe để chạy file C++
+Bước 2: Sau khi cài đặt xong thì xin chúc mừng: BẠN ĐÃ CÀI COMPILE CHO MDLANG THÀNH CÔNG!
+3. Các cú pháp của Mdlang
+I, Thư viện iostd.h
+1. Cơ bản
+| Alias                | Thay thế               |
+| -------------------- | ---------------------- |
+| `set iostd standard` | `using namespace std;` |
+| `program`            | `int`                  |
+| Alias      | Thay thế |
+| ---------- | -------- |
+| `println`  | `cout`   |
+| `input`    | `cin`    |
+| `linedone` | `endl`   |
+Ví dụ
+#include "iostd.h"
+set iostd standard
+program main() {
+    str name;
+    println << "Nhập tên: ";
+    input >> name;
+    println << "Chào " << name << linedone;
+    return 0;
+}
+2. Kiểu dữ liệu
+| Alias     | Thay thế             |
+| --------- | -------------------- |
+| `integer` | `long long`          |
+| `bigint`  | `unsigned long long` |
+| `flt`     | `double`             |
+| `big_flt` | `long double`        |
+| `logic`   | `bool`               |
+| `str`     | `string`             |
+3. Control
+| Alias         | Thay thế  |
+| ------------- | --------- |
+| `switchcase`  | `switch`  |
+| `caseof`      | `case`    |
+| `defaultcase` | `default` |
+4. Task/Multitask
+| Alias         | Thay thế                           |
+| ------------- | ---------------------------------- |
+| `spawn`       | `std::thread`                      |
+| `threads_vec` | `std::vector<std::thread>`         |
+| `joinall`     | `for(auto &t : threads) t.join();` |
+5. Utilities
+| Alias          | Thay thế                                 |
+| -------------- | ---------------------------------------- |
+| `pair`         | `std::pair`                              |
+| `makepair`     | `std::make_pair`                         |
+| `tuple`        | `std::tuple`                             |
+| `maketuple`    | `std::make_tuple`                        |
+| `swap`         | `std::swap`                              |
+| `function`     | `std::function`                          |
+| `bind`         | `std::bind`                              |
+| `randomengine` | `std::mt19937`                           |
+| `uniformint`   | `std::uniform_int_distribution<int>`     |
+| `uniformreal`  | `std::uniform_real_distribution<double>` |
+II, Thư viện mathematics.h
+1. Hằng số
+| Alias | Giá trị                |
+| ----- | ---------------------- |
+| `PI`  | 3.14159265358979323846 |
+| `E`   | 2.71828182845904523536 |
+2. Hàm cơ bản
+| Alias                     | Thay thế                              |
+| ------------------------- | ------------------------------------- |
+| `sqrtf`                   | `std::sqrt`                           |
+| `powf`                    | `std::pow`                            |
+| `sinf`, `cosf`, `tanf`    | `std::sin`, `std::cos`, `std::tan`    |
+| `asinf`, `acosf`, `atanf` | `std::asin`, `std::acos`, `std::atan` |
+| `expf`                    | `std::exp`                            |
+| `logf`, `log10f`          | `std::log`, `std::log10`              |
+| `floorf`, `ceilf`, `absf` | `std::floor`, `std::ceil`, `std::abs` |
+3. Random
+| Alias          | Mô tả                              |
+| -------------- | ---------------------------------- |
+| `randint(a,b)` | Số nguyên ngẫu nhiên trong `[a,b]` |
+| `randflt(a,b)` | Số thực ngẫu nhiên trong `[a,b]`   |
+4.Utilities
+| Alias                | Mô tả                                  |
+| -------------------- | -------------------------------------- |
+| `clamp(val, lo, hi)` | Giới hạn giá trị `val` trong `[lo,hi]` |
+| `sign(val)`          | Trả về 1 nếu >0, -1 nếu <0, 0 nếu =0   |
+5. Fibonacci
+integer fibo_n(integer a, integer b, integer n);
+Tìm số Fibonacci thứ n trong khoảng [a,b].
+Trả về -1 nếu không tìm thấy.
+Ví dụ thuật toán:
+#include "iostd.h"
+#include "mathematics.h"
+set iostd standard;
+program main() {
+    integer n = 5;
+    println << "Fibonacci thứ 5 trong [0,100]: " << fibo_n(0, 100, n) << linedone;
+    return 0;
+}
+4. Ghi chú
+Thư viện Mdlang là sơ khai, chưa tối ưu hiệu năng với Fibonacci lớn hay số học bigint.
+Bạn có thể dùng code C++ ngay trong Mdlang vì nó là file .cpp.
+Có thể mở rộng mdmath.h cho: phân số, ma trận, số nguyên tố, v.v.
+
+-- Nhắc nhỏ: Bạn có thể tải bản Compile C++/C lớn hơn C/C++ mà cha đẻ nó cho vào: C++ 11 
